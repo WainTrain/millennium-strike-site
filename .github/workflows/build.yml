@@ -1,0 +1,23 @@
+name: Deploy Static Website
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+
+    - name: Upload to Remote Server
+      run: |
+        mkdir -p ~/.ssh
+        echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+        chmod 600 ~/.ssh/id_rsa
+        rsync -acv --delete --chmod=ugo=rwX -e "ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa" ./ ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/www/millenniumstrike.com/
