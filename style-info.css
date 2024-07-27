@@ -1,0 +1,779 @@
+@charset "utf-8";
+
+/* styles-info.css ------------------------
+
+Media: Desktop (1920px x 1080px)
+
+*/
+
+
+
+/* CORE ------------------------ */
+
+/* Variables */
+:root{
+    --ms-history-image-drops: 0.5rem 0.5rem 5px rgba(0, 0, 0, 0.5);
+}
+
+/* Base page color setup */
+body{
+    color: #fff;
+    /* background-color: #012966; */
+    background-image: url("/img/main_bg.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+/* Core grid, this will frame the whole page layout */
+#CORE_GRID{
+    display: grid;
+    grid-template-columns: 2fr 8fr;
+    grid-template-rows: auto auto auto;
+    grid-template-areas:
+        "side main"
+        "side links";
+    gap: 2rem;
+    margin-inline: auto;
+    padding-right: 2rem;
+}
+
+/* Left border of the site, contains the nav  (GRID AREA: is a child of #CORE_GRID) */
+.site-edge{
+    grid-area: side;
+
+    background-image: url("/img/sidebar-bg.jpg");
+    background-size: 100% auto;
+    position: relative;
+}
+
+
+
+/* NAVIGATION ------------------------ */
+
+/* Main navigation container. This is the semantic nav */
+.navigation{
+    --nav-border-radius: 1rem 2rem;
+
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    margin-top: 1rem;
+    background: linear-gradient(180deg,
+        rgba(255, 255, 255, 0.75) 0%,
+        rgba(100, 100, 200, 0.75) 25%,
+        rgba(25, 25, 100, 0.75) 100%
+    );
+    border: groove 5px #fff;
+    border-radius: var(--nav-border-radius);
+    box-shadow: var(--ms-history-image-drops);
+    z-index: 2;
+}
+
+/* Navigation title */
+.navigation div{
+    font-family: "MisterFirley", serif;
+    font-size: 2.5rem;
+    text-align: center;
+    padding: 1rem;
+    border-bottom: groove 5px #fff;
+    border-radius: var(--nav-border-radius) 0 0;
+    background: linear-gradient(180deg,
+        rgb(255, 255, 255) 0%,
+        rgb(0, 0, 0) 25%
+    );
+}
+
+/* Unordered list element within nav */
+.navigation ul{
+    padding: 2rem;
+    padding-top: 1rem;
+}
+
+/* Nav options */
+.navigation li a{
+    display: block;
+    font-family: "Enter Sansman", sans-serif;
+    font-size: 2rem;
+    font-style: italic;
+    padding: 0.5rem 1rem;
+    position: relative;
+    color: #fff;
+    transition: color 300ms ease-out;
+    z-index: 2;
+}
+.navigation li a::before{ /* Pseudoelement background fot nav options when hovered, starts with 0 width */
+    content: "";
+    position: absolute;
+    width: 0%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: linear-gradient(180deg,
+            rgb(255, 255, 255) 0%,
+            rgb(200, 200, 255) 100%
+        );
+    border-radius: 0.5rem 1rem;
+    transition: width 300ms ease-out;
+    z-index: -1;
+}
+.navigation li a:hover{ /* Color nav option text black when hovered */
+    color: #000;
+}
+.navigation li a:hover::before{ /* Extend width of the background pseudoelement for a smooth animation */
+    width: 100%;
+}
+
+
+
+/* SECTION BACKGROUNDS ------------------------ */
+
+/* Style for main section container */
+.ms-section-bg{
+    padding: 2rem;
+    color: #000;
+    background: linear-gradient(180deg,
+        rgb(255, 255, 255) 0%,
+        rgb(200, 200, 255) 100%
+    );
+    border: groove 5px #fff;
+    position: relative;
+    z-index: 1;
+}
+
+/* Style for small section container */
+.ms-small-section-bg{
+    padding: 2rem;
+    color: #000;
+    background: linear-gradient(180deg,
+        rgb(180, 180, 255) 0%,
+        rgb(100, 100, 200) 100%
+    );
+    border: groove 5px #fff;
+    position: relative;
+    z-index: 1;
+}
+
+/* These set the radii of the borders, order of swaps for effect */
+.radius-01{
+    border-radius: 3rem 0.5rem;
+}
+.radius-02{
+    border-radius: 0.5rem 3rem;
+}
+
+/* Main page content container, holds heading and history section (GRID AREA: is a child of #CORE_GRID) */
+.ms-article-main{
+    grid-area: main;
+
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    grid-template-areas: 
+        "t t"
+        "b b"
+        "h h";
+    gap: 2rem;
+    padding-top: 2rem;
+}
+
+/* Add a margin below every paragraph element EXCEPT the last one in a section ONLY IF a paragraph is the last element */
+.ms-article-main section p:not(:last-child){
+    margin-bottom: 1rem;
+}
+
+
+
+/* PAGE TITLE ------------------------ */
+
+/* Grid area definition (GRID AREA: is a child of .ms-article-main) */
+#PAGE_TITLE{
+    grid-area: t;
+}
+
+/* Main heading element. This only contains an image, so it being an h1 is only for semantics */
+#PAGE_TITLE h1{
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+/* Image inside of h1 tag. */
+/* TODO: Since this is just the info page, should something else besides the regular logo go here? */
+#PAGE_TITLE h1 img{
+    display: block;
+    max-width: 100%;
+    filter: drop-shadow(1rem 0 #000);
+}
+
+/* Subheading of the page */
+#PAGE_TITLE h2{
+    text-align: center;
+    font-style: italic;
+    font-size: 3rem;
+    line-height: 3.5rem;
+    position: relative;
+    padding-block: 1rem;
+    z-index: 1;
+}
+#PAGE_TITLE h2 span{ /* "AIRING SINCE" text */
+    font-family: "Michroma", sans-serif;
+    font-style: normal;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    line-height: 1rem;
+    letter-spacing: 0.5rem;
+}
+#PAGE_TITLE h2::before{ /* Adds the red gradient background */
+    content: "";
+    position: absolute;
+    width: 150vw;
+    height: 100%;
+    top: 0;
+    left: -50vw;
+    border-top: groove 20px rgba(255, 200, 200, 1);
+    background: linear-gradient(180deg,
+        rgba(255, 255, 255, 0.25) 0%,
+        rgba(0, 0, 0, 0.25) 100%
+    ),
+    linear-gradient(-90deg,
+        rgba(208, 50, 50, 1) 0%,
+        rgba(208, 50, 50, 0.5) 100%
+    );
+    z-index: -1;
+}
+
+
+
+/* BLURB ------------------------ */
+
+/* Grid area definition (GRID AREA: is a child of .ms-article-main) */
+#BLURB{
+    grid-area: b;
+}
+
+
+
+/* HISTORY ------------------------ */
+
+/* Grid area definition (GRID AREA: is a child of .ms-article-main) and sets up a basic auto-flowing grid */
+#HISTORY{
+    grid-area: h;
+    display: grid;
+    gap: 2rem;
+}
+
+/* Main heading to entire history section */
+.ms-history-main-heading{
+    position: relative;
+    margin: 1rem 0 2rem;
+}
+.ms-history-main-heading::before{ /* Background block for main history section heading */
+    content: "";
+    position: absolute;
+    top: 12.5%;
+    left: 25%;
+    width: 50%;
+    height: 75%;
+    background: linear-gradient(180deg,
+        rgb(255, 255, 255) 0%,
+        rgb(100, 100, 200) 25%,
+        rgb(0, 0, 0) 100%
+    );
+    border-radius: 0.5rem 3rem;
+    box-shadow: var(--ms-history-image-drops);
+}
+
+/* MS letter emblem image */
+.ms-history-main-heading img{
+    max-width: 25%;
+    display: block;
+    position: relative;
+    top: 0;
+    left: 35%;
+    filter: drop-shadow(1rem 0 #000);
+}
+
+/* "History" text */
+.ms-history-main-heading h2{
+    position: absolute;
+    bottom: 0;
+    left: 45%;
+    font-size: 4vw;
+    font-style: italic;
+    color: rgb(208, 50, 50);
+    text-shadow:
+        0.5rem 0 #000;
+    z-index: 1;
+}
+
+/* Sets up the baseline for each history subsection's grids. Layout is not set here, it's set per section */
+.ms-history-subgrid{
+    display: grid;
+    gap: 2rem;
+}
+
+/* Clamps images' sizes within the figure elements throught each history subsection */
+.ms-history-subgrid figure img{
+    max-width: 100%;
+    margin-bottom: 0.5rem;
+}
+
+/* Use native box-shadow for images with no transparency */
+.ms-history-subgrid figure img:not(.fig-transparent){
+    box-shadow: var(--ms-history-image-drops);
+}
+
+/* Use a filter drop-shadow to respect images with transparency */
+.ms-history-subgrid figure img.fig-transparent{
+    -webkit-filter: drop-shadow(var(--ms-history-image-drops));
+    filter: drop-shadow(var(--ms-history-image-drops));
+}
+
+/* Captions to figures within each history subsection */
+.ms-history-subgrid figure figcaption{
+    font-family: "Biryani", sans-serif;
+    font-size: 0.64rem;
+    font-weight: bold;
+    font-style: italic;
+}
+
+/* History subsection header styles */
+.history-subsection-header{
+    padding-inline: 3rem;
+    margin-bottom: 2rem;
+    margin-top: 1.5rem;
+    margin-right: 0.5rem;
+    position: relative;
+    color: #fff;
+    z-index: 2;
+}
+.history-subsection-header::before{ /* Adds the gradient background. Usually override linear-gradient per section */
+    content: "";
+    position: absolute;
+    width: 150%;
+    height: 150%;
+    top: -25%;
+    right: 45%;
+    mix-blend-mode: difference;
+    background-color: #000;
+    background: linear-gradient(180deg,
+        rgb(255, 255, 255) 0%,
+        rgb(0, 128, 123) 25%,
+        rgb(0, 0, 0) 100%
+    );
+    border-radius: 0.5rem 3rem;
+    z-index: 1;
+    user-select: none;
+    pointer-events: none;
+    box-shadow: var(--ms-history-image-drops);
+}
+
+/* Heading text styles for history subsection headers */
+.history-subsection-header h3{
+    font-style: italic;
+    margin-top: 1rem;
+}
+.ms-history-year{ /* Span wrapping for the year in each history subsection heading */
+    font-size: 4rem;
+}
+.ms-history-title{ /* Span wrapping for the name of the group in each history subsection heading */
+    font-family: "Enter Sansman", sans-serif;
+    font-size: 2rem;
+    text-transform: uppercase;
+}
+
+/* Heading hero image, always the corresponding group's logo */
+.history-subsection-header img{
+    position: absolute;
+    height: 140%;
+    top: -20%;
+    right: 0;
+    -webkit-filter: drop-shadow(var(--ms-history-image-drops));
+    filter: drop-shadow(var(--ms-history-image-drops));
+}
+
+
+
+/* HISTORY SUBSECTION GRID AREAS ------------------------ */
+
+/* Header */
+.history-subsection-header{
+    grid-area: h;
+}
+
+/* First block of content */
+.history-content-01{
+    grid-area: c1;
+}
+
+/* Second block of content */
+.history-content-02{
+    grid-area: c2;
+}
+
+/* Creates a 4x4 tile of its children. Used for image arrangement */
+.tile-4x4{
+    grid-area: tile;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    column-gap: 1rem;
+}
+
+/* Creates little "windows" in the main sections. Used for the conclusion passages after each section */
+.infill{
+    background:
+        linear-gradient(180deg,
+            rgba(255, 255, 255, 0.75) 0%,
+            rgba(53, 119, 180, 0.5) 25%,
+            rgba(0, 0, 0, 0.5) 100%
+        ),
+        url("/img/main_bg.jpg");
+    background-size: auto, 100vw 100vh;
+    background-attachment: scroll, fixed;
+    border: groove 5px #fff;
+    padding: 2rem;
+    display: grid;
+    place-items: center;
+    text-align: center;
+}
+.infill p{ /* Style paragraph font inside of the "windows" */
+    font-family: "Biryani", sans-serif;
+    font-weight: bold;
+    font-style: italic;
+    color: #fff;
+}
+
+
+
+/* 4F_0 HISTORY SECTION ------------------------ */
+
+/* Main grid layout using areas */
+#SECTION_4F0{
+    grid-template-areas: 
+        "h h h h h h"
+        "c1 c1 c1 i1 i2 i3"
+        "tile tile tile c2 c2 c2";
+}
+
+/* Set the color of the group's name in the subsection's heading */
+#SECTION_4F0 .ms-history-title{
+    color: #00f2ff;
+}
+
+/* Define grid areas */
+#SECTION_4F0 > figure:nth-of-type(1){
+    grid-area: i1;
+}
+#SECTION_4F0 > figure:nth-of-type(2){
+    grid-area: i2;
+}
+#SECTION_4F0 > figure:nth-of-type(3){
+    grid-area: i3;
+}
+
+/* This lets images i1-i3 stay at the same height since they can fit together */
+#SECTION_4F0 > figure:nth-of-type(n+1):nth-of-type(n-3) img{
+    height: 90%;
+}
+
+/* Add a bit of extra space between the tiles */
+#SECTION_4F0 .tile-4x4{
+    gap: 1rem;
+}
+
+/* Set the border radius if the "windows" */
+#SECTION_4F0 .infill{
+    border-radius: 1rem 3rem;
+}
+
+
+
+/* EVA HISTORY SECTION ------------------------ */
+
+/* Main grid layout using areas */
+#SECTION_EVA{
+    grid-template-areas: 
+        "h h h h h h h"
+        "i1 i2 tile tile c1 c1 c1"
+        "c2 c2 c2 c2 i5 i4 i3";
+}
+
+/* Set the color of the group's name in the subsection's heading */
+#SECTION_EVA .ms-history-title{
+    color: #00ff48;
+}
+
+/* Adjust the scale and position of the group's logo to better fit the section */
+#SECTION_EVA .history-subsection-header img{
+    height: 160%;
+    top: -30%;
+}
+
+/* Change subsection's header colors and border radius */
+#SECTION_EVA .history-subsection-header::before{
+    right: 30%;
+    background: linear-gradient(180deg,
+        rgb(255, 255, 255) 0%,
+        rgb(0, 128, 36) 25%,
+        rgb(0, 0, 0) 100%
+    );
+    border-radius: 3rem 0.5rem;
+}
+
+/* Define grid areas */
+#SECTION_EVA > figure:nth-of-type(1){
+    grid-area: i1;
+}
+#SECTION_EVA > figure:nth-of-type(2){
+    grid-area: i2;
+}
+
+#SECTION_EVA > figure:nth-of-type(3){
+    grid-area: i3;
+}
+#SECTION_EVA > figure:nth-of-type(4){
+    grid-area: i4;
+}
+#SECTION_EVA > figure:nth-of-type(5){
+    grid-area: i5;
+}
+
+/* Add extra space between both rows in the 4x4 tile */
+#SECTION_EVA .tile-4x4{
+    row-gap: 1rem;
+}
+
+/* Set the border radius if the "windows" */
+#SECTION_EVA .infill{
+    border-radius: 3rem 1rem;
+}
+
+
+
+/* MS HISTORY SECTION ------------------------ */
+
+/* Main grid layout using areas */
+#SECTION_MS{
+    grid-template-areas: 
+        "h h h h h h"
+        "c1 c1 i4 i2 i1 i3"
+        "sym sym sym c2 c2 c2";
+}
+
+/* A janky hack to get some better vertical spacing on the right block of content. Don't do this */
+#SECTION_MS .history-content-02{
+    margin-top: -4rem;
+}
+
+/* Set the color of the group's name in the subsection's heading */
+#SECTION_MS .ms-history-title{
+    color: #f0ed42;
+}
+
+/* Change subsection's header colors and border radius */
+#SECTION_MS .history-subsection-header::before{
+    background: linear-gradient(180deg,
+        rgb(255, 255, 255) 0%,
+        rgb(0, 123, 238) 25%,
+        rgb(0, 0, 0) 100%
+    );
+}
+
+/* Adjust the scale and position of the group's logo to better fit the section */
+#SECTION_MS .history-subsection-header img{
+    height: 160%;
+    top: -30%;
+}
+
+/* #SECTION_MS > figure img{
+    max-width: 100%;
+} */
+
+/* Define grid areas */
+#SECTION_MS > figure:nth-of-type(1){
+    grid-area: i1;
+}
+#SECTION_MS > figure:nth-of-type(2){
+    grid-area: i2;
+}
+#SECTION_MS > figure:nth-of-type(3){
+    grid-area: i3
+}
+
+#SECTION_MS > figure:nth-of-type(4){
+    grid-area: i4;
+}
+
+/* Set the border radius if the "windows" */
+#SECTION_MS .infill{
+    border-radius: 1rem 3rem;
+}
+
+/* Special figure subgrid for the three variants of the 2021 NS symbol */
+#SECTION_MS > .ms-symbol{
+    grid-area: sym;
+    display: grid;
+    grid-template-areas: 
+        "a b c"
+        "d d d";
+    gap: 1rem;
+}
+
+/* Clamp image sizes inside of the symbols figure subgrid */
+#SECTION_MS > .ms-symbol img{
+    max-width: 80%;
+}
+
+
+
+/* SOCIALS & CREDITS CONTAINER ------------------------ */
+
+/* Container for socials and credits (GRID AREA: is a child of #CORE_GRID) */
+#SOCIALS_CREDITS{
+    grid-area: links;
+
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 2rem;
+}
+
+/* Heading text for socials and credits sections */
+#SOCIALS_CREDITS header h3{
+    font-family: "Enter Sansman", sans-serif;
+    font-style: italic;
+    font-size: 3rem;
+    text-align: center;
+
+    color: #fff;
+    text-shadow: 0.5rem 0 #000;
+    position: relative;
+    z-index: 2;
+}
+#SOCIALS_CREDITS header h3::before{ /* Background gradient for socials and credits section headings */
+    content: "";
+    position: absolute;
+    top: -50%;
+    height: 200%;
+    mix-blend-mode: difference;
+    background-color: #000;
+    background: linear-gradient(180deg,
+        rgb(255, 255, 255) 0%,
+        rgb(229, 72, 72) 25%,
+        rgb(0, 0, 0) 100%
+    );
+    user-select: none;
+    pointer-events: none;
+    box-shadow: var(--ms-history-image-drops);
+}
+
+/* Remove bullets from lists within socials and credits, we only want the semantic property of a list */
+#SOCIALS_CREDITS ul{
+    list-style-type: none;
+}
+
+/* Text styles for links in socials and credits sections */
+#SOCIALS_CREDITS a{
+    font-family: "Enter Sansman", sans-serif;
+    font-style: italic;
+    font-size: 1.5rem;
+
+    color: #fff;
+    text-shadow: 0.25rem 0.25rem #000;
+}
+#SOCIALS_CREDITS a:hover{ /* Hover effects for link text within socials and credits sections */
+    color: #000;
+    text-shadow: 0.25rem 0.25rem #fff;
+}
+
+
+
+/* SOCIALS SECTION ------------------------ */
+
+/* Socials section container, auto-flowing grid container */
+.ms-socials{
+    display: grid;
+    gap: 1rem;
+    position: relative;
+    border-bottom-right-radius: 0;
+}
+
+/* Set the position of the background gradient for the socials section heading */
+.ms-socials header h3::before{
+    left: -50%;
+    width: 125%;
+    border-radius: 3rem 0.5rem ;
+}
+
+/* Grid layout for social icon and text couples */
+.ms-socials ul{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, auto);
+    gap: 4rem;
+    padding: 2rem;
+    text-align: center;
+}
+
+/* Links within social section, containing an image and text alongside one another */
+/* TODO: Flex works here, but this is the only time it's used. Should this be grid for consistency? */
+.ms-socials a{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1rem;
+    transition:
+        color 150ms ease-out,
+        text-shadow 150ms ease-out,
+        gap 150ms ease-out;
+}
+.ms-socials a:hover{ /* Gap changes when the link is hovered */
+    gap: 2rem;
+}
+
+/* Clamp and style image inside of the social link */
+.ms-socials a img{
+    max-width: 30%;
+    -webkit-filter: drop-shadow(var(--ms-history-image-drops));
+    filter: drop-shadow(var(--ms-history-image-drops));
+    transition: transform 150ms ease-out;
+}
+.ms-socials a:hover img{ /* Image gets bigger when the link is hovered */
+    transform: scale(125%);
+}
+
+
+
+/* CREDITS SECTION ------------------------ */
+
+/* Set top left border radius of credits section for visual continuation */
+.ms-credits{
+    border-top-left-radius: 0;
+}
+
+/* Heading text margin to match natrual spacing of sibling socials section */
+.ms-credits h3{
+    margin-bottom: 4rem;
+}
+
+/* Set the position of the background gradient for the credits section heading */
+.ms-credits header h3::before{
+    right: -25%;
+    width: 125%;
+    border-radius: 3rem 0.5rem;
+}
+
+/* Create a basic auto-flowing grid for the lsit of credits */
+.ms-credits ul{
+    display: grid;
+    gap: 0.5rem;
+}
+
+/* Add a transition animation to the link text of each credits list item */
+.ms-credits a{
+    transition:
+        all 150ms ease-out,
+        text-shadow 150ms ease-out,
+        transform 150ms ease-out;
+}

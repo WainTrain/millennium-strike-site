@@ -1,0 +1,111 @@
+@charset "utf-8";
+
+/* core.css ------------------------
+
+Core stylesheet. This includes resets, fixes, and general boilerplate code that tries to make all code written elsewhere cleaner and more consistent.
+
+*/
+
+
+
+/* Resets ------------------------ */
+
+/* Reset scaling for everything and declare base font size */
+*,
+::before,
+::after{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 1em;
+}
+
+/* Main wrapper all elements live within */
+#main_wrapper{
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Reset link styles for later */
+a,
+a:link,
+a:active,
+a:hover,
+a:visited,
+a:invalid{
+    text-decoration: none;
+    color: inherit;
+}
+
+/* The nav ul setup is good for semantics but doesn't need bullet points, so we remove them */
+nav ul{
+    list-style-type: none;
+}
+
+/* 2-step process to force page height to max even if there isn't enough content to do so normally */
+html{
+    height: 100%;
+}
+body{
+    min-height: 100%;
+}
+
+/* Removes the default border around an iframe */
+iframe{
+    border: none;
+}
+
+
+
+/* Variables ------------------------ */
+
+/* Define CSS variables in root scope and for pseudo-elements */
+:root,
+::before,
+::after{
+    /* These variables make uniform spacing easier since they are reusable and can be changed in a media query */
+    --space-smallest: 1rem;
+    --space-small: 1.5rem;
+    --space-large: 2rem;
+    --space-largest: 2.5rem;
+}
+
+
+
+/* Elements ------------------------ */
+
+hr{
+    border: solid #fff 3px;
+    clip-path: polygon(0.5% 0%, 100% 0%, 99.5% 100%, 0% 100%);
+}
+
+
+
+/* Utility Classes ------------------------ */
+
+.asset-needed{
+    background-image: url("/img/no_asset.jpg");
+}
+
+/* Centers a block element horizontally */
+.block-center-x{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Add a defocus effect to white text */
+.defocus-text{
+    text-shadow:
+        15px 0 5px rgba(255, 255, 255, 0.4),
+        30px 0 5px rgba(255, 255, 255, 0.2),
+        -15px 0 5px rgba(255, 255, 255, 0.4),
+        -30px 0 5px rgba(255, 255, 255, 0.2);
+}
+.defocus-text-left{
+    text-shadow:
+        -10px 0 5px rgba(255, 255, 255, 0.4),
+        -20px 0 5px rgba(255, 255, 255, 0.3),
+        -30px 0 5px rgba(255, 255, 255, 0.2),
+        -40px 0 5px rgba(255, 255, 255, 0.1);
+}

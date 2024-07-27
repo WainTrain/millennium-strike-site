@@ -1,0 +1,132 @@
+@charset "utf-8";
+
+/* fonts.css ------------------------
+
+Not all of these will be used, so this and the fonts folder will be cleaned when the time comes.
+All paths are absolute.
+
+*/
+
+/* MisterFirley */
+@font-face {
+    font-family: "MisterFirley";
+    src: url("/fonts/MisterFirley/MisterFirley.otf");
+    font-weight: bold;
+    font-style: italic;
+}
+
+/* Michroma */
+@font-face {
+    font-family: "Michroma";
+    src: url("/fonts/Michroma/Michroma.ttf");
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Enter Sansman */
+@font-face {
+    font-family: "Enter Sansman";
+    src: url("/fonts/EnterSansman/EnterSansman-Bold.ttf");
+    font-weight: bold;
+    font-style: normal;
+}
+@font-face {
+    font-family: "Enter Sansman";
+    src: url("/fonts/EnterSansman/EnterSansman-BoldItalic.ttf");
+    font-weight: bold;
+    font-style: italic;
+}
+
+/* Biryani */
+@font-face {
+    font-family: "Biryani";
+    src: url("/fonts/Biryani/Biryani-ExtraLight.ttf");
+    font-weight: 200;
+    font-style: normal;
+}
+@font-face {
+    font-family: "Biryani";
+    src: url("/fonts/Biryani/Biryani-Light.ttf");
+    font-weight: 300;
+    font-style: normal;
+}
+@font-face {
+    font-family: "Biryani";
+    src: url("/fonts/Biryani/Biryani-Regular.ttf");
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: "Biryani";
+    src: url("/fonts/Biryani/Biryani-SemiBold.ttf");
+    font-weight: 600;
+    font-style: normal;
+}
+@font-face {
+    font-family: "Biryani";
+    src: url("/fonts/Biryani/Biryani-Bold.ttf");
+    font-weight: 700;
+    font-style: normal;
+}
+@font-face {
+    font-family: "Biryani";
+    src: url("/fonts/Biryani/Biryani-ExtraBold.ttf");
+    font-weight: 800;
+    font-style: normal;
+}
+
+/* Define font size variables
+This will create a uniform scale for fonts */
+:root,
+::before,
+::after{
+    --mod: 0.25rem;
+    --txt-lh: 2.45rem;
+    --txt-h1: 2.64rem;
+    --txt-h2: calc(var(--txt-h1) - var(--mod));
+    --txt-h3: calc(var(--txt-h2) - var(--mod));
+    --txt-h4: calc(var(--txt-h3) - var(--mod));
+    --txt-h5: calc(var(--txt-h4) - var(--mod));
+    --txt-h6: calc(var(--txt-h5) - var(--mod));
+    --txt-p: 1.1rem;
+    --txt-lh-p: calc(var(--txt-lh) / 1.25);
+}
+
+h1,h2,h3,h4,h5,h6,p{
+    font-family: "Biryani", sans-serif;
+    font-weight: bold;
+    font-style: normal;
+    line-height: var(--txt-lh);
+}
+h1{
+    font-family: "Enter Sansman", sans-serif;
+    font-size: var(--txt-h1);
+}
+h2{
+    font-family: "Enter Sansman", sans-serif;
+    font-size: var(--txt-h2);
+}
+h3{
+    font-family: "MisterFirley", serif;
+    font-size: var(--txt-h3);
+}
+h4{
+    font-family: "Enter Sansman", sans-serif;
+    font-size: var(--txt-h4);
+}
+h5{
+    font-size: var(--txt-h5);
+}
+h6{
+    font-size: var(--txt-h6);
+}
+p{
+    font-size: var(--txt-p);
+    line-height: var(--txt-lh-p);
+}
+
+/* strong for emphasis, b for style only */
+/* The same applies to em and i respectively */
+strong, b{
+    color: #003aae;
+}
