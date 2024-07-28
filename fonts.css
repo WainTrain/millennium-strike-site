@@ -10,7 +10,7 @@ All paths are absolute.
 /* MisterFirley */
 @font-face {
     font-family: "MisterFirley";
-    src: url("/fonts/MisterFirley/MisterFirley.otf");
+    src: url("fonts/MisterFirley/MisterFirley.otf");
     font-weight: bold;
     font-style: italic;
 }
@@ -18,7 +18,7 @@ All paths are absolute.
 /* Michroma */
 @font-face {
     font-family: "Michroma";
-    src: url("/fonts/Michroma/Michroma.ttf");
+    src: url("fonts/Michroma/Michroma.ttf");
     font-weight: normal;
     font-style: normal;
 }
@@ -26,13 +26,13 @@ All paths are absolute.
 /* Enter Sansman */
 @font-face {
     font-family: "Enter Sansman";
-    src: url("/fonts/EnterSansman/EnterSansman-Bold.ttf");
+    src: url("fonts/EnterSansman/EnterSansman-Bold.ttf");
     font-weight: bold;
     font-style: normal;
 }
 @font-face {
     font-family: "Enter Sansman";
-    src: url("/fonts/EnterSansman/EnterSansman-BoldItalic.ttf");
+    src: url("fonts/EnterSansman/EnterSansman-BoldItalic.ttf");
     font-weight: bold;
     font-style: italic;
 }
@@ -40,37 +40,37 @@ All paths are absolute.
 /* Biryani */
 @font-face {
     font-family: "Biryani";
-    src: url("/fonts/Biryani/Biryani-ExtraLight.ttf");
+    src: url("fonts/Biryani/Biryani-ExtraLight.ttf");
     font-weight: 200;
     font-style: normal;
 }
 @font-face {
     font-family: "Biryani";
-    src: url("/fonts/Biryani/Biryani-Light.ttf");
+    src: url("fonts/Biryani/Biryani-Light.ttf");
     font-weight: 300;
     font-style: normal;
 }
 @font-face {
     font-family: "Biryani";
-    src: url("/fonts/Biryani/Biryani-Regular.ttf");
+    src: url("fonts/Biryani/Biryani-Regular.ttf");
     font-weight: normal;
     font-style: normal;
 }
 @font-face {
     font-family: "Biryani";
-    src: url("/fonts/Biryani/Biryani-SemiBold.ttf");
+    src: url("fonts/Biryani/Biryani-SemiBold.ttf");
     font-weight: 600;
     font-style: normal;
 }
 @font-face {
     font-family: "Biryani";
-    src: url("/fonts/Biryani/Biryani-Bold.ttf");
+    src: url("fonts/Biryani/Biryani-Bold.ttf");
     font-weight: 700;
     font-style: normal;
 }
 @font-face {
     font-family: "Biryani";
-    src: url("/fonts/Biryani/Biryani-ExtraBold.ttf");
+    src: url("fonts/Biryani/Biryani-ExtraBold.ttf");
     font-weight: 800;
     font-style: normal;
 }

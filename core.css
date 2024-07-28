@@ -84,7 +84,7 @@ hr{
 /* Utility Classes ------------------------ */
 
 .asset-needed{
-    background-image: url("/img/no_asset.jpg");
+    background-image: url("img/no_asset.jpg");
 }
 
 /* Centers a block element horizontally */
