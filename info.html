@@ -5,32 +5,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Info – Millennium Strike</title>
     <meta name="description" content="Millennium Strike is a bi-monthly show hosted on Twitch.com with each episode featuring audio / video performances and DJ sets. Each episode includes 10-minute intermission lobbies to take advantage of the show’s atmosphere and further engage the audience with retro and aesthetically pleasing commercials. The goal is to make each performance feel like a TV program from the 90’s – 00’s.">
-    <link rel="stylesheet" href="core.css"> <!-- Core stylesheet -->
-    <link rel="stylesheet" href="fonts.css"> <!-- Fonts and base font styles -->
-    <link rel="stylesheet" href="style-info.css"> <!-- Styles specific to the page -->
+    <link rel="stylesheet" href="/core.css"> <!-- Core stylesheet -->
+    <link rel="stylesheet" href="/fonts.css"> <!-- Fonts and base font styles -->
+
+    <!-- Styles specific to the page -->
+    <link rel="stylesheet" href="/style-info.css" type="text/css" />
 </head>
 <body>
 
     <!-- All content, including core grid, is wrapped here -->
     <div id="main_wrapper">
+
+        <!-- Left border and navigation -->
+        <input id="MS_HAMBURGER" type="checkbox"><label id="MS_HAMBURGER_LABEL" for="ms-hamburger" title="Tap for the main menu" aria-label="Main menu hamburger button"></label>
+        <div class="site-edge">
+            <nav class="navigation">
+                <div>Main Menu</div>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Info</a></li>
+                    <li><a href="#">Strikers</a></li>
+                    <li><a href="#">Releases</a></li>
+                    <li><a href="#">URL Events</a></li>
+                    <li><a href="#">Live Shows</a></li>
+                    <li><a href="#">Merch</a></li>
+                </ul>
+            </nav>
+        </div>
+
         <!-- Core grid container for parent layout -->
         <div id="CORE_GRID">
-            
-            <!-- Left black border -->
-            <div class="site-edge">
-                <nav class="navigation">
-                    <div>Main Menu</div>
-                    <ul>
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">Info</a></li>
-                        <li><a href="#">Strikers</a></li>
-                        <li><a href="#">Releases</a></li>
-                        <li><a href="#">URL Events</a></li>
-                        <li><a href="#">Live Shows</a></li>
-                        <li><a href="#">Merch</a></li>
-                    </ul>
-                </nav>
-            </div>
 
             <!-- Main contains main unique content to page -->
             <main class="ms-article-main">

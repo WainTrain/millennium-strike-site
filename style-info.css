@@ -28,23 +28,79 @@ body{
 /* Core grid, this will frame the whole page layout */
 #CORE_GRID{
     display: grid;
-    grid-template-columns: 2fr 8fr;
-    grid-template-rows: auto auto auto;
-    grid-template-areas:
-        "side main"
-        "side links";
     gap: 2rem;
-    margin-inline: auto;
-    padding-right: 2rem;
+    padding: 2rem;
+    max-width: 80%;
+    margin-left: auto;
 }
 
-/* Left border of the site, contains the nav  (GRID AREA: is a child of #CORE_GRID) */
+/* Left border of the site, contains the nav */
 .site-edge{
-    grid-area: side;
-
     background-image: url("/img/sidebar-bg.jpg");
     background-size: 100% auto;
-    position: relative;
+    position: absolute;
+    width: 20%;
+    height: 100%;
+}
+
+/* Tablet + Mobile query (shared) */
+@media only screen and
+(max-width: 1250px) {
+
+    /* Re-center grid */
+    #CORE_GRID{
+        max-width: 100%;
+        margin-left: 0;
+    }
+
+    /* Revert edge width to 0 on handheld devices */
+    .site-edge{
+        width: 0;
+    }
+
+}
+
+
+
+/* HAMBURGER BUTTON ------------------------ */
+
+/* Do not show the hamburger menu on desktop, but set it up with a fixed position */
+#MS_HAMBURGER,
+#MS_HAMBURGER + #MS_HAMBURGER_LABEL{
+    position: fixed;
+    display: none;
+}
+
+/* Tablet + Mobile query (shared) */
+@media only screen and
+(max-width: 1250px) {
+
+    #MS_HAMBURGER{
+        z-index: 100;
+    }
+    #MS_HAMBURGER + #MS_HAMBURGER_LABEL{
+        display: block;
+
+        top: 0%;
+        left: 0%;
+        
+        width: 15vw;
+        height: 15vw;
+        width: 15dvw;
+        height: 15dvw;
+
+        z-index: 100;
+        cursor: pointer;
+        background-image: url("/img/no_asset.jpg");
+        background-size: cover;
+        transition: opacity 300ms ease;
+    }
+
+    /* Make nav appear when #MS_HAMBURGER is checked */
+    #MS_HAMBURGER:checked ~ .navigation{
+        left: 2rem;
+    }
+
 }
 
 
@@ -57,7 +113,7 @@ body{
 
     position: fixed;
     top: 1rem;
-    left: 1rem;
+    left: 2rem;
     margin-top: 1rem;
     background: linear-gradient(180deg,
         rgba(255, 255, 255, 0.75) 0%,
@@ -124,6 +180,17 @@ body{
     width: 100%;
 }
 
+/* Tablet + Mobile query (shared) */
+@media only screen and
+(max-width: 1250px) {
+
+    /* Hide nav until it is called */
+    .navigation{
+        left: -100%;
+    }
+
+}
+
 
 
 /* SECTION BACKGROUNDS ------------------------ */
@@ -162,16 +229,13 @@ body{
     border-radius: 0.5rem 3rem;
 }
 
-/* Main page content container, holds heading and history section (GRID AREA: is a child of #CORE_GRID) */
-.ms-article-main{
-    grid-area: main;
 
+
+/* MAIN CONTENT CONTAINER ------------------------ */
+
+/* Main page content container, holds heading and history section */
+.ms-article-main{
     display: grid;
-    grid-template-columns: 1.2fr 1fr;
-    grid-template-areas: 
-        "t t"
-        "b b"
-        "h h";
     gap: 2rem;
     padding-top: 2rem;
 }
@@ -185,9 +249,9 @@ body{
 
 /* PAGE TITLE ------------------------ */
 
-/* Grid area definition (GRID AREA: is a child of .ms-article-main) */
+/* Page title container */
 #PAGE_TITLE{
-    grid-area: t;
+    display: block;
 }
 
 /* Main heading element. This only contains an image, so it being an h1 is only for semantics */
@@ -245,18 +309,17 @@ body{
 
 /* BLURB ------------------------ */
 
-/* Grid area definition (GRID AREA: is a child of .ms-article-main) */
+/* Blurb section container */
 #BLURB{
-    grid-area: b;
+    display: block;
 }
 
 
 
 /* HISTORY ------------------------ */
 
-/* Grid area definition (GRID AREA: is a child of .ms-article-main) and sets up a basic auto-flowing grid */
+/* History section container */
 #HISTORY{
-    grid-area: h;
     display: grid;
     gap: 2rem;
 }
@@ -391,6 +454,92 @@ body{
     filter: drop-shadow(var(--ms-history-image-drops));
 }
 
+/* Tablet query */
+@media only screen and
+(min-width: 721px) and
+(max-width: 1250px) {
+
+    /* Make history header background smaller */
+    .ms-history-main-heading::before{
+        width: 45%;
+    }
+
+    .history-subsection-header::before{ /* Push default history subsection heading background back a bit */
+        right: 55%;
+    }
+
+    .ms-history-year{ /* Make year text smaller */
+        font-size: 3.5rem;
+    }
+    .ms-history-title{ /* Make title text smaller */
+        font-size: 1.75rem;
+    }
+
+    /* Heading hero image, always the corresponding group's logo */
+    .history-subsection-header img{
+        height: 125%;
+        top: -12.5%;
+    }
+
+}
+
+/* Mobile query */
+@media only screen and
+(max-width: 720px) {
+
+    /* Make history header background smaller */
+    .ms-history-main-heading::before{
+        width: 100%;
+        left: 0%;
+    }
+
+    /* MS letter emblem image */
+    .ms-history-main-heading img{
+        max-width: 50%;
+        left: 20%;
+    }
+    
+    /* "History" text */
+    .ms-history-main-heading h2{
+        left: 45%;
+        font-size: 8vw;
+    }
+
+    /* History subsection header styles */
+    .history-subsection-header{
+        display: grid;
+        margin-top: 0;
+    }
+
+    .history-subsection-header::before{ /* Push default history subsection heading background back a bit */
+        top: 0%;
+        right: 0;
+        height: 50%;
+    }
+
+    /* Adjust line height of hisotyr subsection header for smaller screen */
+    .history-subsection-header h3{
+        line-height: 1.75rem;
+        margin-bottom: 4rem;
+    }
+
+    .ms-history-year{ /* Make year text smaller */
+        font-size: 3.2rem;
+    }
+    .ms-history-title{ /* Make title text smaller */
+        font-size: 1.5rem;
+    }
+
+    /* Heading hero image, always the corresponding group's logo */
+    .history-subsection-header img{
+        position: static;
+        max-width: 100%;
+        height: auto;
+        margin-inline: auto;
+    }
+
+}
+
 
 
 /* HISTORY SUBSECTION GRID AREAS ------------------------ */
@@ -487,6 +636,44 @@ body{
     border-radius: 1rem 3rem;
 }
 
+/* Tablet query */
+@media only screen and
+(min-width: 721px) and
+(max-width: 1250px) {
+    
+    /* Main grid layout using areas */
+    #SECTION_4F0{
+        grid-template-areas: 
+            "h h"
+            "c1 c1"
+            "c2 c2"
+            "i1 i2"
+            "i3 tile";
+    }
+
+}
+
+/* Mobile query */
+@media only screen and
+(max-width: 720px) {
+    
+    /* Main grid layout using areas */
+    #SECTION_4F0{
+        grid-template-areas: 
+            "h h"
+            "c1 c1"
+            "c2 c2"
+            "i1 i2"
+            "i3 tile";
+    }
+    
+    /* Reset images i1-i3 since they need to be allowed to scale with the layout */
+    #SECTION_4F0 > figure:nth-of-type(n+1):nth-of-type(n-3) img{
+        height: auto;
+    }
+
+}
+
 
 
 /* EVA HISTORY SECTION ------------------------ */
@@ -549,6 +736,57 @@ body{
     border-radius: 3rem 1rem;
 }
 
+/* Tablet query */
+@media only screen and
+(min-width: 721px) and
+(max-width: 1250px) {
+
+    /* Move heading background more inwards */
+    #SECTION_EVA .history-subsection-header::before{
+        right: 35%;
+    }
+
+    /* Make image smaller to fit better */
+    #SECTION_EVA .history-subsection-header img{
+        height: 140%;
+        top: -20%;
+    }
+
+}
+
+/* Mobile query */
+@media only screen and
+(max-width: 720px) {
+
+    /* Main grid layout using areas */
+    #SECTION_EVA{
+        grid-template-areas: 
+            "h h"
+            "c1 c1"
+            "c2 c2"
+            "i3 i2"
+            "i5 i4"
+            "i1 tile";
+    }
+
+    /* Move heading background more inwards */
+    #SECTION_EVA .history-subsection-header::before{
+        right: 0%;
+    }
+
+    /* Reset image height and positioning */
+    #SECTION_EVA .history-subsection-header img{
+        height: auto;
+        top: 0%;
+    }
+
+    /* Add extra space between both rows in the 4x4 tile */
+    #SECTION_EVA .tile-4x4{
+        row-gap: 0;
+    }
+
+}
+
 
 
 /* MS HISTORY SECTION ------------------------ */
@@ -586,10 +824,6 @@ body{
     top: -30%;
 }
 
-/* #SECTION_MS > figure img{
-    max-width: 100%;
-} */
-
 /* Define grid areas */
 #SECTION_MS > figure:nth-of-type(1){
     grid-area: i1;
@@ -625,14 +859,63 @@ body{
     max-width: 80%;
 }
 
+/* Tablet query */
+@media only screen and
+(min-width: 721px) and
+(max-width: 1250px) {
+
+    /* Make image smaller to fit better */
+    #SECTION_MS .history-subsection-header img{
+        height: 140%;
+        top: -20%;
+    }
+
+    /* Rearrange MS symbols figure grid */
+    #SECTION_MS > .ms-symbol{
+        grid-template-areas: 
+            "a b"
+            "c d";
+    }
+
+    /* Make MS symbol images smaller */
+    #SECTION_MS > .ms-symbol img{
+        max-width: 50%;
+    }
+    #SECTION_MS > .ms-symbol img:nth-of-type(2){ /* Make the blue one slightly smaller */
+        max-width: 40%;
+    }
+
+}
+
+
+/* Mobile query */
+@media only screen and
+(max-width: 720px) {
+
+    #SECTION_MS{
+        grid-template-areas: 
+            "h h"
+            "c1 c1"
+            "c2 c2"
+            "i4 i2"
+            "i1 i3"
+            "sym sym";
+    }
+
+    /* Make image smaller to fit better */
+    #SECTION_MS .history-subsection-header img{
+        height: 140%;
+        top: -20%;
+    }
+
+}
+
 
 
 /* SOCIALS & CREDITS CONTAINER ------------------------ */
 
-/* Container for socials and credits (GRID AREA: is a child of #CORE_GRID) */
+/* Container for socials and credits */
 #SOCIALS_CREDITS{
-    grid-area: links;
-
     display: grid;
     grid-template-columns: 2fr 1fr;
     gap: 2rem;
@@ -686,6 +969,49 @@ body{
     text-shadow: 0.25rem 0.25rem #fff;
 }
 
+/* Tablet query */
+@media only screen and
+(min-width: 721px) and
+(max-width: 1250px) {
+
+    /* Even out the widths of both containers */
+    #SOCIALS_CREDITS{
+        grid-template-columns: 1fr 1fr;
+    }
+
+    /* Make header text smaller */
+    #SOCIALS_CREDITS header h3{
+        font-size: 2rem;
+    }
+
+    /* Make link text a bit smaller */
+    #SOCIALS_CREDITS a{
+        font-size: 1.25rem;
+    }
+
+}
+
+/* Mobile query */
+@media only screen and
+(max-width: 720px) {
+
+    /* Even out the widths of both containers */
+    #SOCIALS_CREDITS{
+        grid-template-columns: 1fr;
+    }
+
+    /* Make header text smaller */
+    #SOCIALS_CREDITS header h3{
+        font-size: 2rem;
+    }
+
+    /* Make link text a bit smaller */
+    #SOCIALS_CREDITS a{
+        font-size: 1.25rem;
+    }
+
+}
+
 
 
 /* SOCIALS SECTION ------------------------ */
@@ -710,7 +1036,7 @@ body{
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(2, auto);
-    gap: 4rem;
+    gap: 2rem;
     padding: 2rem;
     text-align: center;
 }
@@ -728,8 +1054,15 @@ body{
         text-shadow 150ms ease-out,
         gap 150ms ease-out;
 }
-.ms-socials a:hover{ /* Gap changes when the link is hovered */
-    gap: 2rem;
+
+/* Only animate on desktop */
+@media only screen and
+(min-width: 1251px) {
+
+    .ms-socials a:hover{ /* Gap changes when the link is hovered */
+        gap: 2rem;
+    }
+
 }
 
 /* Clamp and style image inside of the social link */
@@ -739,8 +1072,63 @@ body{
     filter: drop-shadow(var(--ms-history-image-drops));
     transition: transform 150ms ease-out;
 }
-.ms-socials a:hover img{ /* Image gets bigger when the link is hovered */
-    transform: scale(125%);
+
+
+/* Only animate on desktop */
+@media only screen and
+(min-width: 1251px) {
+
+    .ms-socials a:hover img{ /* Image gets bigger when the link is hovered */
+        transform: scale(125%);
+    }
+
+}
+
+/* Tablet query */
+@media only screen and
+(min-width: 721px) and
+(max-width: 1250px) {
+
+    /* Adjust background position */
+    .ms-socials header h3::before{
+        left: -25%;
+    }
+
+    /* Make socials list 2x3 instead of 3x2 */
+    .ms-socials ul{
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto;
+        gap: 2rem;
+    }
+
+    /* Make social icons a bit smaller */
+    .ms-socials a img{
+        max-width: 25%;
+    }
+
+}
+
+/* Mobile query */
+@media only screen and
+(max-width: 720px) {
+
+    /* Adjust background position */
+    .ms-socials header h3::before{
+        left: -25%;
+    }
+
+    /* Make socials list 2x3 instead of 3x2 */
+    .ms-socials ul{
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        gap: 2rem;
+    }
+
+    /* Make social icons a bit smaller */
+    .ms-socials a img{
+        max-width: 25%;
+    }
+
 }
 
 
