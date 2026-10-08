@@ -7,6 +7,12 @@
     <link rel="icon" type="image/png" href="images/favicon.png">
 
     <style>
+        @font-face {
+            font-family: Neuropol;
+            src: url("fonts/neuropol.ttf") format("truetype");
+            font-display: swap;
+        }
+
         body {
             margin: 0;
             min-height: 100vh;
@@ -21,6 +27,8 @@
             z-index: 1;
             padding: 16px 24px;
             display: flex;
+            flex-direction: column;
+            align-items: center;
             justify-content: center;
             pointer-events: none;
         }
@@ -31,6 +39,58 @@
             height: auto;
             object-fit: contain;
             filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.55));
+        }
+
+        .social-links {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 18px;
+            margin-top: 10px;
+        }
+
+        .social-links a {
+            display: grid;
+            width: 24px;
+            height: 24px;
+            place-items: center;
+            color: #fff;
+            pointer-events: auto;
+            transition: opacity 150ms ease, transform 150ms ease;
+        }
+
+        .social-links a[aria-label="Bandcamp"] img {
+           transform: scale(1.2);
+        }
+
+        .social-links a[aria-label="Bluesky"] img {
+           transform: scale(0.6);
+        }
+
+        .social-links a:hover {
+            opacity: 0.75;
+            transform: translateY(-2px);
+        }
+
+        .social-links a:focus-visible {
+            outline: 2px solid #fff;
+            outline-offset: 4px;
+        }
+
+        .social-links img,
+        .social-links svg {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .social-links img {
+            filter: brightness(0) invert(1);
+        }
+
+        .social-links svg {
+            fill: currentColor;
         }
 
         main {
@@ -62,6 +122,7 @@
         .download-link {
             display: inline-block;
             padding: 10px 20px;
+            font-family: Neuropol, "Century Gothic", sans-serif;
             font-size: 16px;
             cursor: pointer;
             color: inherit;
@@ -85,6 +146,20 @@
             src="images/ms_white_1.png"
             alt="Millennium Strike"
         >
+        <nav class="social-links" aria-label="Social media">
+            <a href="https://your-band.bandcamp.com" aria-label="Bandcamp">
+                <img src="images/vectors/bandcamp-svgrepo-com.svg" alt="">
+            </a>
+            <a href="https://www.youtube.com/@your-channel" aria-label="YouTube">
+                <img src="images/vectors/youtube-play-svgrepo-com.svg" alt="">
+            </a>
+            <a href="https://www.instagram.com/your-profile" aria-label="Instagram">
+                <img src="images/vectors/instagram-svgrepo-com.svg" alt="">
+            </a>
+            <a href="https://bsky.app/profile/your-handle.bsky.social" aria-label="Bluesky">
+                <img src="images/vectors/bluesky_media_kit_logo_transparent_4.svg" alt="">
+            </a>
+        </nav>
     </header>
 
     <main>
