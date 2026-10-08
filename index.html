@@ -16,14 +16,14 @@
         body {
             margin: 0;
             min-height: 100vh;
+            min-height: 100svh;
+            display: flex;
+            flex-direction: column;
             isolation: isolate;
         }
 
         .site-header {
-            position: fixed;
-            top: 20px;
-            left: 0;
-            right: 0;
+            position: relative;
             z-index: 1;
             padding: 16px 24px;
             display: flex;
@@ -45,14 +45,14 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 18px;
+            gap: clamp(10px, 4vw, 18px);
             margin-top: 10px;
         }
 
         .social-links a {
             display: grid;
-            width: 36px;
-            height: 36px;
+            width: clamp(28px, 8vw, 36px);
+            height: clamp(28px, 8vw, 36px);
             place-items: center;
             color: #fff;
             pointer-events: auto;
@@ -60,11 +60,20 @@
         }
 
         .social-links a[aria-label="Bandcamp"] img {
-           transform: scale(1.2);
+            transform: scale(1.2);
+        }
+
+        .social-links a[aria-label="Twitch"] img {
+            transform: scale(0.6);
+        
         }
 
         .social-links a[aria-label="Bluesky"] img {
-           transform: scale(0.6);
+            transform: scale(0.6);
+        }
+
+        .social-links a[aria-label="Instagram"] img {
+            transform: scale(0.9);
         }
 
         .social-links a:hover {
@@ -94,12 +103,13 @@
         }
 
         main {
-            min-height: 100vh;
+            flex: 1;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             gap: 20px;
+            padding: 24px 0;
         }
 
         body::before {
@@ -129,12 +139,23 @@
             text-decoration: none;
             background: #efefef;
             border: 1px solid #767676;
-            border-radius: 2px;
+            border-radius: 15px;
         }
 
         .download-link:focus-visible {
             outline: 2px solid currentColor;
             outline-offset: 3px;
+        }
+
+        .blurb {
+            border-style: solid;
+            border-width: 1px;
+            background-color: #292929;
+            border-color: #ffffff;
+            color:#ffffff;
+            padding: 10px 20px;
+            margin-top: 50px;
+            font-family: "consolas", "Century Gothic", monospace;
         }
     </style>
 </head>
@@ -153,8 +174,14 @@
             <a href="https://www.youtube.com/c/MillenniumStrike" aria-label="YouTube">
                 <img src="images/vectors/youtube-play-svgrepo-com.svg" alt="">
             </a>
+            <a href="https://www.twitch.tv/millenniumstrike" aria-label="Twitch">
+                <img src="images/vectors/twitch-182.svg" alt="">
+            </a>
             <a href="https://www.instagram.com/millenniumstrike/" aria-label="Instagram">
                 <img src="images/vectors/instagram-svgrepo-com.svg" alt="">
+            </a>
+            <a href="https://soundcloud.com/millenniumstrike" aria-label="SoundCloud">
+                <img src="images/vectors/soundcloud.svg" alt="">
             </a>
             <a href="https://bsky.app/profile/millenniumstrike.bsky.social" aria-label="Bluesky">
                 <img src="images/vectors/bluesky_media_kit_logo_transparent_4.svg" alt="">
@@ -176,6 +203,22 @@
         >
             Download MS Community Pack 1
         </a>
+
+        <span class="blurb"> 
+            <p> This community asset pack contains: </p>
+            <ul>
+                <li>x148 Audio Samples</li>
+                <li>x134 VST Presets</li>
+                <li>3D models</li>
+                <li>Rendered Images</li>
+                <li>Photos</li>
+                <li>Overlay Images</li>
+                <li>HUD Elements</li>
+            </ul>
+            <p> + much more! <br> </p> 
+
+            <p>Thank you for supporting MILLENNIUM STRIKE!
+        </span>
     </main>
 </body>
 </html>
