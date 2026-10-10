@@ -142,6 +142,47 @@
             border-radius: 15px;
         }
 
+        .paypal-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            font-family: Neuropol, "Century Gothic", sans-serif;
+            font-size: 16px;
+            cursor: pointer;
+            color: #ffffff;
+            text-decoration: none;
+            background: #413ef3;
+            border: 1px solid #767676;
+            border-radius: 15px;
+        }
+
+        .paypal-link .support-icon {
+            transform: scale(1.8);
+        }
+
+        .kofi-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            font-family: Neuropol, "Century Gothic", sans-serif;
+            font-size: 16px;
+            cursor: pointer;
+            color: #ffffff;
+            text-decoration: none;
+            background: #e04e29;
+            border: 1px solid #767676;
+            border-radius: 15px;
+        }
+
+        .support-icon {
+            width: 28px;
+            height: 28px;
+            flex: 0 0 28px;
+            object-fit: contain;
+        }
+
         .download-link:focus-visible {
             outline: 2px solid currentColor;
             outline-offset: 3px;
@@ -202,6 +243,26 @@
             download="MS COMMUNITY PACK 1.zip"
         >
             Download MS Community Pack 1
+        </a>
+
+        <a
+            class="paypal-link"
+            href="https://www.paypal.com/paypalme/Milstrike805"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+            <span>Pay what you want to for this pack on :</span>
+            <img class="support-icon" src="images/vectors/paypal-svgrepo-com.svg" alt="">
+        </a>
+
+        <a
+            class="kofi-link"
+            href="https://ko-fi.com/millenniumstrike"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+            <span>Pay what you want to for this pack on Ko-fi</span>
+            <img class="support-icon" src="images/vectors/kofi-svgrepo-com.svg" alt="">
         </a>
 
         <span class="blurb"> 
